@@ -1,5 +1,4 @@
 import "./globals.css";
-import Header from "@/app/components/Header";
 import React from "react";
 
 

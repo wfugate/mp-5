@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@mui/material";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UrlContext} from "@/app/context/UrlContext";
 
 
@@ -23,6 +23,7 @@ export default function ShortenButton(){
                     shortCode: urlData.shortCode,
                 }),
             });
+
             const data = await response.json();
 
             
@@ -32,6 +33,10 @@ export default function ShortenButton(){
                 
             });
         } catch (error) {
+            setUrlData({
+                ...urlData,
+                shortCode:"",
+            })
             return error;
         }
         

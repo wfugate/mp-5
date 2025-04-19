@@ -1,10 +1,19 @@
-import {Container, TextField, Typography} from "@mui/material";
+import {Button, Container, Typography} from "@mui/material";
 import { Link } from "@mui/material";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {UrlContext} from "@/app/context/UrlContext";
 export default function LinkOutput() {
 
-    const { urlData, setUrlData } = useContext(UrlContext);
+    const [copied, setCopied] = useState<boolean>(false);
+    const { urlData, isShortened } = useContext(UrlContext);
+    if (!isShortened) {
+        return <></>
+    }
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(shortenedUrl);
+        setCopied(true);
+    }
+    const shortenedUrl = `${window.location.origin}/${urlData.shortCode}`;
     return (
         <Container
             sx={{
@@ -25,7 +34,9 @@ export default function LinkOutput() {
                 Your shortened link:
             </Typography>
         <Link
-            onClick={() => {""}}
+            href={shortenedUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{
                 fontSize: 26,
                 marginLeft: "6vw",
@@ -34,8 +45,20 @@ export default function LinkOutput() {
             }}
 
         >
-            http://localhost:3000/{urlData.shortCode}
+            {shortenedUrl}
         </Link>
+            <Button
+                variant="contained"
+                onClick={copyToClipboard}
+                sx={{
+                    marginTop: "2vh",
+                }}
+            >
+
+            </Button>
+            {copied && (
+                <Typography>Copied to clipboard!</Typography>
+            )}
         </Container>
     );
 }
