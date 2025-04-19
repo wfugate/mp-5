@@ -13,7 +13,6 @@ interface UrlContextType {
     setIsShortened: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// Create context with default values
 export const UrlContext = createContext<UrlContextType>({
     urlData: { originalUrl: "", shortCode: "" },
     setUrlData: () => {},

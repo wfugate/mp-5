@@ -12,7 +12,7 @@ export default function Header() {
                 textAlign: "center",
                 fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
                 fontWeight: 700,
-                fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+                fontFamily: '"Roboto", sans-serif',
                 width: "100%",
                 boxSizing: "border-box",
             }}

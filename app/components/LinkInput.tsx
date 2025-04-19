@@ -10,7 +10,8 @@ export default function LinkInput() {
             sx={{
                 backgroundColor: "white",
                 borderRadius: "10px",
-                width: "80%"
+                width: "60%",
+                fontFamily: '"Roboto", sans-serif',
             }}
             value={urlData.originalUrl}
             onChange={(e) => setUrlData({ ...urlData, originalUrl: e.target.value })}

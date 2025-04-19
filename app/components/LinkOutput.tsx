@@ -1,4 +1,4 @@
-import {Button, Container, Typography} from "@mui/material";
+import {Box, Button, Container, Typography} from "@mui/material";
 import { Link } from "@mui/material";
 import {useContext, useState} from "react";
 import {UrlContext} from "@/app/context/UrlContext";
@@ -9,10 +9,15 @@ export default function LinkOutput() {
     if (!isShortened) {
         return <></>
     }
+
     const copyToClipboard = () => {
         navigator.clipboard.writeText(shortenedUrl);
         setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+        }, 3000);
     }
+
     const shortenedUrl = `${window.location.origin}/${urlData.shortCode}`;
     return (
         <Container
@@ -25,39 +30,53 @@ export default function LinkOutput() {
                 width: "60%",
                 margin: "2vw",
                 marginTop: 0,
+                textAlign: "center"
             }}
 
         >
             <Typography
+                sx={{
+                    fontFamily: '"Roboto", sans-serif',
+                }}
 
             >
                 Your shortened link:
             </Typography>
-        <Link
-            href={shortenedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-                fontSize: 26,
-                marginLeft: "6vw",
-                marginRight:"2vw"
-
-            }}
-
-        >
-            {shortenedUrl}
-        </Link>
+            <Box>
+                <Link
+                    href={shortenedUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                        fontSize: "1.3rem",
+                        fontFamily: '"Roboto", sans-serif',
+                        color: "black",
+                        wordBreak: "break-all",
+                        "&:hover": {
+                            textDecoration: "underline",
+                            color: "#cfaaf9"
+                        }
+                    }}
+                >
+                    {shortenedUrl}
+                </Link>
+            </Box>
             <Button
                 variant="contained"
                 onClick={copyToClipboard}
                 sx={{
                     marginTop: "2vh",
+                    backgroundColor: "#CF9FFF"
                 }}
             >
-
+                Copy to clipboard
             </Button>
             {copied && (
-                <Typography>Copied to clipboard!</Typography>
+                <Typography
+                    sx={{
+                        fontFamily: '"Roboto", sans-serif',
+                    }}
+                >Copied to clipboard!</Typography>
             )}
         </Container>
     );

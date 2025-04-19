@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { MongoClient } from "mongodb";
 
-//pageProps to pass values into component
+//pageProps passes parameters into the page
 type PageProps = {
     params: {
         shortCode: string;
@@ -39,10 +39,8 @@ export async function getRedirectUrl(shortCode: string): Promise<string | null> 
 
 //actual page component with the props passed in
 export default async function RedirectPage({ params }: PageProps) {
-    //get the shortcode
+    //get the shortcode from the parameters
     const { shortCode } = params;
-
-    //get the url
     const redirectUrl = await getRedirectUrl(shortCode);
 
     if (redirectUrl) {

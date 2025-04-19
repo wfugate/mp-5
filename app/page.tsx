@@ -18,14 +18,13 @@ export default function Home() {
                     width: "100vw",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
                     alignItems: "center",
                 }}
                 >
                     <LinkInput/>
                     <ShortCode/>
-                    <LinkOutput/>
                     <ShortenButton/>
+                    <LinkOutput/>
                 </Box>
             </Box>
         </UrlProvider>

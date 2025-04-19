@@ -7,15 +7,13 @@ export default function ShortCode() {
 
     return (
         <TextField
-            placeholder="alias"
+            placeholder="Enter Alias"
             sx={{
                 backgroundColor: "white",
                 borderRadius: "10px",
                 width: "30%",
-                margin: "2vw"
-
-
-
+                margin: "2vw",
+                fontFamily: '"Roboto", sans-serif',
             }}
             value={urlData.shortCode}
             onChange={(e) => setUrlData({ ...urlData , shortCode: e.target.value })}
