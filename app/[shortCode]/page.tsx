@@ -9,7 +9,7 @@ type PageProps = {
 };
 
 //function to find the redirect url using mongodb
-export async function getRedirectUrl(shortCode: string): Promise<string | null> {
+async function getRedirectUrl(shortCode: string): Promise<string | null> {
     const MONGO_URI = process.env.MONGODB_URI;
     if (!MONGO_URI) {
         return null;
