@@ -1,12 +1,6 @@
 import { redirect } from 'next/navigation';
 import { MongoClient } from "mongodb";
 
-//pageProps passes parameters into the page
-type PageProps = {
-    params: {
-        shortCode: string;
-    };
-};
 
 //function to find the redirect url using mongodb
 async function getRedirectUrl(shortCode: string): Promise<string | null> {
