@@ -38,15 +38,18 @@ async function getRedirectUrl(shortCode: string): Promise<string | null> {
 }
 
 //actual page component with the props passed in
-export default async function RedirectPage({ params }: PageProps) {
-    //get the shortcode from the parameters
+export default async function RedirectPage({
+                                               params,
+                                           }: {
+    params: { shortCode: string }
+}) {
     const { shortCode } = params;
+
     const redirectUrl = await getRedirectUrl(shortCode);
 
+    //redirect if URL is found
     if (redirectUrl) {
         redirect(redirectUrl);
     }
-
-    //return in case no url was found.
     return <div>URL not found for code: {shortCode}</div>;
 }
